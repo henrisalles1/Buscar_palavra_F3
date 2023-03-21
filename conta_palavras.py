@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 texto = 'Em artes gráficas, o texto é a matéria escrita, por oposição a toda a parte iconográfica (ilustrações e outros elementos). É a parte principal do livro, revista ou periódico, constituída por composição maciça, desprovida de títulos, subtítulos, epígrafes, fórmulas, tabelas, etc.' \
 'Um texto pode ser codificado, formado de acordo com um código determinado impeditivo da sua leitura direta.'\
 'Um texto tem tamanho variável e deve ser escrito com coesão e coerência. Pode ser classificado como literário e não-literário.'\
@@ -8,14 +10,13 @@ texto_minusculo = texto.lower()
 print(texto)
 print('')
 
-aparicoes = {}
+aparicoes = defaultdict(int)
 
 for palavra in texto_minusculo.split():
-    ate_agora = aparicoes.get(palavra, 0)
-    aparicoes[palavra] = ate_agora + 1
+    aparicoes[palavra] += 1
 
 def quantas_vezes_apareceu(palavra):
     print('A palavra "{}" apareceu {} vezes'.format(palavra,aparicoes[palavra]))
 
-
+quantas_vezes_apareceu('carro')
 quantas_vezes_apareceu('exemplos')
